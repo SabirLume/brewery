@@ -7,29 +7,29 @@
         res.render('index.ejs');
     });
 
-    // PROFILE SECTION =========================
-    app.get('/profile', isLoggedIn, function(req, res) {
-        db.collection('newsArticles').find().toArray((err, result) => {
-          if (err) return console.log(err)
-          res.render('profile.ejs', {
-            user : req.user,
-            messages: result
-          })
-        })
-    });
+    // // PROFILE SECTION =========================
+    // app.get('/profile', isLoggedIn, function(req, res) {
+    //     db.collection('newsArticles').find().toArray((err, result) => {
+    //       if (err) return console.log(err)
+    //       res.render('profile.ejs', {
+    //         user : req.user,
+    //         messages: result
+    //       })
+    //     })
+    // });
 
     // LOGOUT ==============================
-    app.get('/logout', function(req, res) {
-        req.logout();
-        res.redirect('/');
-    });
+    // app.get('/logout', function(req, res) {
+    //     req.logout();
+    //     res.redirect('/');
+    // });
 
 // message board routes ===============================================================
 
     app.post('/messages', (req, res) => {
       console.log(req.body)
       console.log(req.body.msg)
-      db.collection('newsArticles').save({msg: req.body.msg}, (err, result) => {
+      db.collection('brewery').save({msg: req.body.msg}, (err, result) => {
       //  console.log(req.body)
         if (err) return console.log(err)
         console.log('saved to database')
@@ -38,7 +38,7 @@
     })
 
     app.put('/messages', (req, res) => {
-      db.collection('newsArticles')
+      db.collection('brewery')
       .findOneAndUpdate({msg: req.body.msg}, {
         $set: {
           star:req.body.star + 1
@@ -53,7 +53,7 @@
     })
 
     app.delete('/messages', (req, res) => {
-      db.collection('newsArticles').findOneAndDelete({msg: req.body.msg}, (err, result) => {
+      db.collection('brewery').findOneAndDelete({msg: req.body.msg}, (err, result) => {
         if (err) return res.send(500, err)
         res.send('Message deleted!')
       })

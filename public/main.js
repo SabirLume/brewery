@@ -33,7 +33,7 @@ function brew(e) {
 // function news(e) {
 //   let title = results.value;
 //   e.preventDefault();
-//   let url = "https://newsapi.org/v2/everything?q=" +title + "&apikey=" +key;
+//   let url = "https://api.openbrewerydb.org/breweries?by_state=${input}";
 //   console.log(url)
 // fetch(url)
 //     .then(res => res.json()) // parse response as JSON (can be res.text() for plain response)

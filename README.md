@@ -8,7 +8,7 @@ In this application the user can search a state and it return brewerys in that s
 
 **Tech used:** HTML, CSS, JavaScript, Node.js, Express Framework of choice
 
-In this application I used a API to grab breweries in different states. These
+In this application I used a API to grab breweries in different states. You are able to like each.
 
 
 
